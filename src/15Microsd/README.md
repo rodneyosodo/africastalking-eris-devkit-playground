@@ -42,3 +42,192 @@ To start with, insert the micro SD card module into the breadboard. Connect VCC 
 As micro SD cards require a lot of data transfer, they will give the best performance when connected up to the hardware SPI pins on a microcontroller. The hardware SPI pins are much faster than ‘bit-banging’ the interface code using another set of pins.
 
 Note that each Arduino Board has different SPI pins which should be connected accordingly. For Arduino boards such as the UNO/Nano those pins are digital 13 (SCK), 12 (MISO) and 11 (MOSI). You will also need a fourth pin for the ‘chip/slave select’ (SS) line. Usually this is pin 10 but you can actually use any pin you like.
+
+
+If you have a Mega, the pins are different! You’ll want to use digital 50 (MISO), 51 (MOSI), 52 (SCK), and 53 (SS). Refer below table for quick understanding.
+
+MOSI	MISO	SCK	CS
+Arduino Uno	11	12	13	10
+Arduino Nano	11	12	13	10
+Arduino Mega	51	50	52	53
+In case you’re using different Arduino board than mentioned above, it is advisable to check the Arduino official documentation before proceeding.
+
+Arduino Wiring Fritzing Connections with Micro SD TF Card Module
+Wiring Micro SD Card Module to Arduino UNO
+That’s it! We are now ready to log some data!
+
+Arduino Code – Testing the SD card module with CardInfo
+Communicating with an SD card is a bunch of work, but luckily for us, Arduino IDE already contains a very nice library called SD which simplifies reading from and writing to SD cards. You can see it in the Examples submenu.
+
+Next, select the CardInfo example sketch.
+
+SD Library CardInfo Sketch in Arduino IDE
+This sketch will not write any data to the card. It just tells you if it managed to recognize the card, and displays some information about it. This can be very useful when trying to figure out whether an SD card is supported. Before trying out any new card, we recommend you to run this sketch once!
+
+Go to the beginning of the sketch and make sure that the chipSelect line is correctly initialized, in our case we’re using digital pin #10 so change it to 10!
+
+Initialising ChipSelect CardInfo Sketch in Arduino IDE
+OK, now insert the SD card into the module and upload the sketch.
+
+As soon as you open the Serial Monitor, you’ll probably get something like the following:
+
+CardInfo Sketch Output in Arduino IDE - Working
+You may find it gibberish, but it’s useful to see the card type is SDHC (SD High Capacity), Volume type is FAT32 as well as the size of the card about 4 GB etc.
+
+If you have a bad card, which seems to happen more with clone versions, you might see:
+
+CardInfo Sketch Output in Arduino IDE - Bad Corrupt Card
+The card mostly responded, but the data is all bad. See there is no Manufacturer ID / OEM ID and the Product ID is ‘N/A’. This shows that the card returned some SD errors. It’s basically a bad scene. If you get something like this, you can try to reformat it or if it still flakes out, you should toss the card.
+
+Finally, try taking out the SD card and running the sketch again, you’ll get the following,
+
+CardInfo Sketch Output in Arduino IDE - Initialization Failed
+See, it couldn’t even initialize the SD card. This can also happen if there’s a wiring error or if the card is permanently damaged.
+
+If the wiring is correct but the SD card is not properly formatted, you’ll get something like this:
+
+CardInfo Sketch Output in Arduino IDE - No Proper Format
+Arduino Code – Reading and Writing Data
+Considering you have successfully initialized the SD card, we’ll move on to our next experiment. The following sketch will do a basic demonstration of writing and reading data from a file. Try the sketch out, before we begin its detailed breakdown.
+
+#include <SPI.h>
+#include <SD.h>
+
+File myFile;
+
+// change this to match your SD shield or module;
+const int chipSelect = 10;
+
+void setup()
+{
+  // Open serial communications and wait for port to open:
+  Serial.begin(9600);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for Leonardo only
+  }
+
+
+  Serial.print("Initializing SD card...");
+
+  if (!SD.begin()) {
+    Serial.println("initialization failed!");
+    return;
+  }
+  Serial.println("initialization done.");
+
+  // open the file. note that only one file can be open at a time,
+  // so you have to close this one before opening another.
+  myFile = SD.open("test.txt", FILE_WRITE);
+
+  // if the file opened okay, write to it:
+  if (myFile) {
+    Serial.print("Writing to test.txt...");
+    myFile.println("testing 1, 2, 3.");
+    // close the file:
+    myFile.close();
+    Serial.println("done.");
+  } else {
+    // if the file didn't open, print an error:
+    Serial.println("error opening test.txt");
+  }
+
+  // re-open the file for reading:
+  myFile = SD.open("test.txt");
+  if (myFile) {
+    Serial.println("test.txt:");
+
+    // read from the file until there's nothing else in it:
+    while (myFile.available()) {
+      Serial.write(myFile.read());
+    }
+    // close the file:
+    myFile.close();
+  } else {
+    // if the file didn't open, print an error:
+    Serial.println("error opening test.txt");
+  }
+}
+
+void loop()
+{
+  // nothing happens after setup
+}
+One the code is uploaded, if everything is ok, the following will appear on the serial monitor.
+
+Micro SD Card SD library Output on Serial Monitor
+If you reset your Arduino and let the sketch run again; the new data written gets appended to the file without overwriting previous data.
+
+Micro SD Card SD library Second Output on Serial Monitor
+Code Explanation:
+The sketch starts with including the built in SD library and the SPI library which allows us to easily communicate with the SD card over SPI interface.
+
+#include <SPI.h>
+#include <SD.h>
+After the libraries have been included, the next thing we do is declare the Arduino pin to which the chipSelect (CS) pin of the SD card module is connected. The CS pin is the only one that is not really fixed as any of the Arduino digital pin. We don’t need to declare other SPI pins since we are using hardware SPI interface and these pins are already declared in the SPI library. After declaring the pin, we then create an object myFile, which will be used later on to store data on the SD card.
+
+const int chipSelect = 10;
+File myFile;
+Next, in the setup() section: We start the serial communication for showing the results on the serial monitor. Now, using the SD.begin() function we will initialize the SD card and if initialization is successful the “if” statement becomes true and the String “initialization done.” gets printed on the serial monitor, else the string “initialization failed!” gets printed and the program terminates.
+
+Serial.begin(9600);
+  Serial.print("Initializing SD card...");
+  if (!SD.begin()) {
+    Serial.println("initialization failed!");
+    return;
+  }
+  Serial.println("initialization done.");
+Next, the SD.open() function will open the file named “test.txt”. In our case, as such file is not present, it’ll be created. The other parameter FILE_WRITE opens the file in read-write mode.
+
+myFile = SD.open("test.txt", FILE_WRITE);
+Once the file is opened, we will print the “Writing to test.txt…” message on the serial monitor and then using the myFile.println() function we will write the text “testing 1, 2, 3.” into the file. After that we need to use close() function to ensure that the data written to the file is saved.
+
+  if (myFile) {
+    Serial.print("Writing to test.txt...");
+    myFile.println("testing 1, 2, 3.");
+    myFile.close();
+    Serial.println("done.");
+  } else {
+    Serial.println("error opening test.txt");
+  }
+Now let’s read the same file to check if the write operation was successful.To do that, we will use the same function, SD.open() , but this time as the file “test.txt” has already been created, the function will just open the file. Then using the myFile.read() function we will read from the file and print it on the serial monitor. The read() function actually reads just one character at a time, so therefore we need to use the “while” loop and the function myFile.available() to read all characters in file. At the end we need to close the file.
+
+myFile = SD.open("test.txt");
+  if (myFile) {
+    Serial.println("test.txt:");
+    while (myFile.available()) {
+      Serial.write(myFile.read());
+    }
+    myFile.close();
+  } else {
+    Serial.println("error opening test.txt");
+  }
+Since this is just a demo sketch to demonstrate how to read and write files, there is no point to run the code multiple times so all the code was placed in the setup() function which runs just once, instead of putting it in a loop() function which runs over and over again.
+
+void loop() 
+{
+}
+Some things to note
+You can use print() and println() functions just like Serial objects, to write strings, variables, etc
+Read() only returns a character at a time. It does not read a full line or a number!
+You must close() the file(s) when you’re done to make sure all the data is written permanently! This reduces the amount of RAM used.
+You can open files in a directory. For example, if you want to open a file in the directory, you can call SD.open("/myfiles/example.txt") . Note that the file path is relative.
+The SD card library does not support ‘long filenames’. Instead, it uses the 3 format for file names, so keep file names short! For example datalog.txt is fine but “My Sensor log file.text” is not!
+Also keep in mind that file names do not have ‘case’ sensitivity, so datalog.txt is the same file as DataLog.Txt is the same file as DATALOG.TXT
+Other useful functions in SD Library
+Functions used with SD object
+There are a few useful functions you can use with SD object. Few of them are listed below:
+
+If you just want to check if a file exists, use exists("filename.txt") which will return true or false.
+You can delete a file by calling remove("unwanted.txt") be careful! This will really delete it, and there’s no ‘Recycle Bin’ to pull it out of.
+You can create a subdirectory by calling mkdir("/mynewdir") handy when you want to stuff files in a location. Nothing happens if it already exists but you can always call SD.exists() above first.
+Functions used with File object
+Also, there are few functions you can use with File objects:
+
+You can seek() on a file. This will move the reading/writing cursor to a new location. For example seek(0) will take you to the beginning of the file, which can be very handy!
+Likewise you can call position() which will tell you where you are in the file.
+If you want to know the size of a file, call size() to get the number of bytes in the file.
+Directories/folders are special files, you can determine if a file is a directory by calling isDirectory()
+Once you have a directory, you can start going through all the files in the directory by calling openNextFile()
+You may end up with needing to know the name of a file, say if you called openNextFile() on a directory. In this case, call name() which will return a pointer to the 8.3-formatted character array you can directly Serial.print() if you want.
+Share
+DisclaimerPrivacy Policy
