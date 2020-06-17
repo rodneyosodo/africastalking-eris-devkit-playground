@@ -1,4 +1,4 @@
 {
-    "arduino.commandPath": "/usr/local/bin/arduino",
-    "arduino.path": "/usr/local/bin/arduino"
+    "arduino.path": "/home/r0x6f736f646f/tools/arduino-1.8.13",
+    "C_Cpp.errorSquiggles": "Disabled"
 }
