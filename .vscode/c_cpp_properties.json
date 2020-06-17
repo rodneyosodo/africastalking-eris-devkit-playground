@@ -2,13 +2,13 @@
     "configurations": [{
         "name": "Linux",
         "includePath": [
-            "/home/r0x6f736f646f/.arduino15/packages/stm32duino/tools/**",
-            "/home/r0x6f736f646f/.arduino15/packages/stm32duino/hardware/STM32F1/2020.6.17/**",
+            "~/.arduino15/packages/stm32duino/tools/**",
+            "~/.arduino15/packages/stm32duino/hardware/STM32F1/2020.6.17/**",
             "${workspaceFolder}/**",
-            "/home/r0x6f736f646f/tools/arduino-1.8.13/libraries/**",
+            "~/tools/arduino-1.8.13/libraries/**",
             "~/.arduino15/packages/arduino/tools/**",
             "~/.arduino15/packages/arduino/hardware/avr/1.8.2/**",
-            "/home/r0x6f736f646f/Arduino/libraries/**"
+            "~/Arduino/libraries/**"
         ],
         "defines": [],
         "compilerPath": "/usr/bin/gcc",
