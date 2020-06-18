@@ -1,3 +1,5 @@
+# SERVO MOTOR
+###### tags: `eris-devkit`
 ## INTRODUCTION
 Want to add motion to your next Arduino project without building a motor controller? Then servo motors might be the solid launching point for you. With servo motors you can precisely control the positioning of these motors. Instructing them where to point, and they’ll do it for you.
 
@@ -25,7 +27,14 @@ If the pulse is high for 2ms, then the servo will at 180 degrees.
 Pulses ranging between 1ms and 2ms will move the servo shaft through the full 180 degrees of its travel.
 
 #### Pinout
+Generic
+
 ![](https://i.imgur.com/4LFDthm.png)
+
+How it looks like
+
+![](https://i.imgur.com/vQtWjqD.jpg)
+
 
 * **GND** (black or brown wire) is a common ground for both the motor and logic.
 * **5V** (red wire) is a positive voltage that powers the servo.
@@ -75,6 +84,9 @@ The code to make the servo follow the knob’s position is simpler than to make 
 
 ##### Wiring
 As the wiring diagram shows you’ll need a potentiometer, any value from 10k up will be OK. Connect one end of the pot to ground, the other end to the Arduino 5V and the wiper to analog input PA7.
+
+![](https://i.imgur.com/ouVDZkS.jpg)
+
 
 ```cpp
 #include <Servo.h>
