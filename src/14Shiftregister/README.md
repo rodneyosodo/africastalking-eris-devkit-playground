@@ -37,7 +37,7 @@ You can understand this better with the illustration shown below.
 
 Let’s take a look at its Pinout. Notice that two pins have a line over their name; this means they operate in “negative logic”. 
 
-* **GND** should be connected to the ground of Arduino.
+* **GND** should be connected to the ground of eris-dev-kit.
 * **VCC** is the power supply for 74HC595 shift register which we connect the 5V pin on the eris-dev-kit.
 * **SER (Serial Input)** is used to feed data into the shift register a bit at a time.
 * **SRCLK (Shift Register Clock)** is the clock for the shift register. The 595 is clock-driven on the rising edge. This means that in order to shift bits into the shift register, the clock must be HIGH. And bits are transferred in on the rising edge of the clock.
@@ -53,14 +53,13 @@ Let’s take a look at its Pinout. Notice that two pins have a line over their n
 
 Start by placing the shift register on to your breadboard, ensuring each side of the IC is on a separate side of the breadboard. With the little U-shaped notch facing upwards, the pins are 1-8 down the left hand side from top to bottom and 16 – 9 down the right hand side from top to bottom as can be seen in the illustration below.
 
-To start with let’s connect pins 16 (VCC) and 10 (SRCLR) to the 5v pin on the Arduino and connect pins 8 (GND) and 13 (OE) to the Gnd pin on the Arduino. This should keep the IC into the normal working mode.
+To start with let’s connect pins 16 (VCC) and 10 (SRCLR) to the 5v pin on the eris-dev-kit and connect pins 8 (GND) and 13 (OE) to the Gnd pin on the eris-dev-kit. This should keep the IC into the normal working mode.
 
 Next we need to connect the three pins that we will control the shift register with:
 
-*     Pin 11 (SRCLK) of the shift register to pin 6 on the Arduino
-*     Pin 12 (RCLK) of the shift register to pin 5 on the Arduino
-*     Pin 14 (SER) of the shift register to pin 4 on the Arduino
-* 
+* Pin 11 (SRCLK) of the shift register to pin PB1 on the eris-dev-kit
+* Pin 12 (RCLK) of the shift register to pin PA7 on the eris-dev-kit
+* Pin 14 (SER) of the shift register to pin PA6 on the eris-dev-kit
 Now, we just have to connect up all of the output pins to our LEDs, ensuring that a 220Ω resistor is placed before the LEDs as to reduce the current and that the cathodes of the LEDs go back to ground.
 
 When placing the LEDs be sure that they are connected in order, so that QA is wired to the first LED, and QH is wired to the last LED, as otherwise our code is not going to light up the LEDs in the correct order!
@@ -96,7 +95,7 @@ void loop() {
 }
 
 /*
- * updateShiftRegister() - This function sets the latchPin to low, then calls the Arduino function 'shiftOut' to shift out contents of variable 'leds' in the shift register before putting the 'latchPin' high again.
+ * updateShiftRegister() - This function sets the latchPin to low, then calls the eris-dev-kit function 'shiftOut' to shift out contents of variable 'leds' in the shift register before putting the 'latchPin' high again.
  */
 void updateShiftRegister(){
     digitalWrite(latchPin, LOW);
@@ -105,7 +104,7 @@ void updateShiftRegister(){
 }
 ```
 
-If you wanted to turn one of the LEDs off rather than on, you would call a similar Arduino function bitClear() on the ‘leds’ variable. This will set that particular bit of ‘leds’ to be 0 and you would then just need to call updateShiftRegister() to update the actual LEDs.
+If you wanted to turn one of the LEDs off rather than on, you would call a similar eris-dev-kit function bitClear() on the ‘leds’ variable. This will set that particular bit of ‘leds’ to be 0 and you would then just need to call updateShiftRegister() to update the actual LEDs.
 
 
 
