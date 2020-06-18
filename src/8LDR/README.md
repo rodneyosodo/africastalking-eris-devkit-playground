@@ -15,30 +15,39 @@ A photoresistor, LDR for light-dependent resistor is a passive component that de
 When light falls on the surface of the LDR the conductance of the element increases, the resistance of the LDR decreases. This property of the LDR is achieved because it is a property of semiconductor material used on the surface.
 
 #### Pinout
-![](https://i.imgur.com/46eWuFM.jpg)
+
+Generic
+
 ![](https://i.imgur.com/ExTQzjt.png)
+
+How it looks like
+
+![](https://i.imgur.com/46eWuFM.jpg)
+
 
 * **GND** is a common ground for both the motor and logic.
 * **5V** is a positive voltage that powers the servo.
 * **Signal** transmit data
 
 ## PROCEDURE
-#### How to setup DHT11![](https://i.imgur.com/5EJQfHl.jpg)
+#### How to setup DHT11
+
+![](https://i.imgur.com/5EJQfHl.jpg)
 
 Wiring the LDR to the eris-dev-kit is really easy.
 Connect the Red wire or Vcc pin to the 5V on the dev kit and Black wire or GND pin to ground. Finally connect the Orange wire or Data pin to the PWM enabled pin PA7.
 Connect the module to any 3 pin brackets e.g to PB0, PB1, PA6 brackets
 
-- Connect the 3.3v output of the Arduino to the positive rail of the breadboard
+- Connect the 3.3v output of the eris-dev-kit to the positive rail of the breadboard
 - Connect the ground to the negative rail of the breadboard
 - Place the LDR on the breadboard
 - Attach the 10K resistor to one of the legs of the LDR
-- Connect the PA6 pin of the Arduino to the same column where the LDR and resistor is connected (Since the LDR gives out an analog voltage, it is connected to the analog input pin on the eris-dev-kit. With an in-built ADC (Analog to Digital Converter), it converts the analog voltage from 0-5V into a digital value in the range of 0-4095).
+- Connect the PA6 pin of the eris-dev-kit to the same column where the LDR and resistor is connected (Since the LDR gives out an analog voltage, it is connected to the analog input pin on the eris-dev-kit. With an in-built ADC (Analog to Digital Converter), it converts the analog voltage from 0-5V into a digital value in the range of 0-4095).
 -  Now connect the other end of the 10K resistor to the negative rail and the the second (free) leg of the LDR to the positive rail
 
 
 #### Programming
-The analog Pin senses the voltage and gives some analog value to Arduino. The analog value changes according to the resistance of LDR. So, as the light falls on the LDR the resistance of it get decreased and hence the voltage value increase.
+The analog Pin senses the voltage and gives some analog value to eris-dev-kit. The analog value changes according to the resistance of LDR. So, as the light falls on the LDR the resistance of it get decreased and hence the voltage value increase.
 
 ```cpp
 const int ldrPin = PA6; // declaring the analog input pint as PA6
@@ -84,7 +93,7 @@ void loop() {
 }
 
 ```
-As per the Arduino code, if the analog value falls below 2000 we consider it as dark and the light turns ON. If the value comes above 700 we consider it as bright and the light turns OFF.
+As per the eris-dev-kit code, if the analog value falls below 2000 we consider it as dark and the light turns ON. If the value comes above 2000 we consider it as bright and the light turns OFF.
 
 ## APPLICATIONS
 - Home automation
