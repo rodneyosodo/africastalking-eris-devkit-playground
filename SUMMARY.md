@@ -1,5 +1,6 @@
 # Table of contents
 
-* [africastalking-eris-devkit-playground](README.md)
+* [index](README.md)
+* [index](untitled.md)
 * [Demo](demo.md)
 
