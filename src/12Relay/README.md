@@ -1,4 +1,4 @@
-# DHT11
+# SOLID STATE RELAY
 ###### tags: `eris-devkit`
 
 ## INTRODUCTION
@@ -38,7 +38,14 @@ When current stops flowing through the coil, the internal contact returns to its
 - **VCC** pin supplies power to the module.
 
 #### Pinout
+
+Generic relay
+
 ![](https://i.imgur.com/8NuMAID.png)
+
+How it looks like
+
+![](https://i.imgur.com/XrJftak.jpg)
 
 
 **Warning:
