@@ -24,7 +24,13 @@ It can measure the moisture content in the soil based on the change in resistanc
 Similarly dry soil conducts less electricity. When there will be less water, then the soil will conduct less electricity which means that there will be more resistance. Therefore, the moisture level will be lower.
 
 #### Pinout
+Generic
+
 ![](https://i.imgur.com/YCLNE50.png)
+
+How it looks like
+
+![](https://i.imgur.com/zVX0Jl2.jpg)
 
 * **GND** is a common ground for both the motor and logic.
 * **5V** is a positive voltage that powers the servo.
@@ -42,6 +48,11 @@ Before you start storing data or triggering events, you should see what readings
 Wiring the module to the eris-dev-kit is really easy.
 Connect the Red wire or Vcc pin to the 5V on the dev kit and Black wire or GND pin to ground. Finally connect the Orange wire or Data pin to the PWM enabled pin PA7.
 Connect the module to any 3 pin brackets e.g to PB0, PB1, PA6 brackets
+
+![](https://i.imgur.com/TxK1X6M.jpg)
+
+
+![](https://i.imgur.com/vZqCwHZ.jpg)
 
 #### Programming
 To make it to operate in Analog Mode, we need to connect analog output of the sensor to ADC input of the eris-dev-kit. While monitoring the sensor we will get ADC values from 0-4095. The moisture content will be measured in percentage, so we have to map the values from 0 -100 and then that will be displayed on Serial Monitor.
