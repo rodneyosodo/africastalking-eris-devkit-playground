@@ -46,20 +46,26 @@ Distance = 8.5 cm
 
 
 #### Pinout 
+Generic
+
 ![](https://i.imgur.com/dkHy6lc.png)
 
+How it looks
 
-* **VCC** is the power supply for HC-SR04 Ultrasonic distance sensor which we connect the 5V pin on the Arduino.
+![](https://i.imgur.com/3uen6hu.jpg)
+
+
+* **VCC** is the power supply for HC-SR04 Ultrasonic distance sensor which we connect the 5V pin on the eris-dev-kit.
 * **Trigger pin**  is used to trigger the ultrasonic sound pulses.
 * **Echo pin** produces a pulse when the reflected signal is received. The length of the pulse is proportional to the time it took for the transmitted signal to be detected.
 
 ## PROCEDURE
 #### How to setup DHT11
-Start by placing the sensor on to your breadboard. Connect VCC pin to the 5V pin on the Arduino and connect GND pin to the Ground pin on the Arduino.
+Start by placing the sensor on to your breadboard. Connect VCC pin to the 5V pin on the eris-dev-kit and connect GND pin to the Ground pin on the eris-dev-kit.
+![](https://i.imgur.com/UZDn3NQ.jpg)
 
 #### Programming
 Before doing the hard process we will use the NewPing librarry which should be installed. It is well written and has good examples. It is easy to install, Go to tools the manage library then search `New Ping`
-![](https://i.imgur.com/68tYPCm.png)
 
 
 
@@ -70,7 +76,7 @@ Before doing the hard process we will use the NewPing librarry which should be i
 // Include NewPing Library
 #include   <NewPing.h>
 
-// Hook up HC-SR04 with Trig to Arduino Pin PB10, Echo to Arduino pin PB11
+// Hook up HC-SR04 with Trig to eris-dev-kit Pin PB10, Echo to eris-dev-kit pin PB11
 #define TRIGGER_PIN PB10
 #define ECHO_PIN PB11
 
