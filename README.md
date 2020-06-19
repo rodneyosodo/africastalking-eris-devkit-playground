@@ -30,7 +30,7 @@ This is my playground for the africastalking erisv1 development kit.
 [![img](https://i.imgur.com/qFCOPik.jpg)](https://africastalking.com/iot)
 
 
-This is my playground for the africastalking erisv1 development kit. I plan on building with arduino then rust and finally bare metal. Hope you learn one or two things
+This is my playground for the africastalking erisv1 development kit. I plan on building with Arduino, then rust and finally bare metal. I hope you learn a few things.
 
 
 ### Built With
@@ -45,13 +45,13 @@ This is my playground for the africastalking erisv1 development kit. I plan on b
 <!-- GETTING STARTED -->
 ## Getting Started
 
-These instructions will get you a copy of the code up and running on your local host for development and testing purposes.
+These instructions will get you a copy of the code up and running on your localhost for development and testing purposes.
 
 ### Prerequisites
 
-Things you will need to bring the project up on your local machine
+Things you will need to bring the project upon your local machine.
 
-* stm32board support for arduino
+* stm32board support for Arduino
 * rust support
 
 ### Installation
@@ -66,7 +66,7 @@ https://github.com/0x6f736f646f/africastalking-eris-devkit-playground
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples, and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
@@ -82,13 +82,13 @@ See the [open issues](https://github.com/0x6f736f646f/africastalking-eris-devkit
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions make the open-source community such a fantastic place to learn, inspire, and create. Any contributions you make are ** much appreciated**.
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct.
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
@@ -114,6 +114,6 @@ Project Link: [https://github.com/0x6f736f646f/africastalking-eris-devkit-playgr
 ## Acknowledgements
 
 * [Moi Brian]()
-* [Kelvin Gitu]()
+* [Kelvin Gitu](https://twitter.com/GituKelvin)
 
 [![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/0)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/0)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/1)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/1)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/2)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/2)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/3)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/3)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/4)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/4)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/5)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/5)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/6)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/6)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/7)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/7)
