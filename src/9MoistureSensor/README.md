@@ -2,33 +2,33 @@
 ###### tags: `eris-devkit`
 
 ## INTRODUCTION
-The soil moisture sensor gives us the relative soil moisture content compared to the when the soil is completely wet. It gives us an analog signal of current soil moisture!
+The soil moisture sensor gives us the relative soil moisture content compared to when the soil is thoroughly wet. It gives us an analog signal of current soil moisture!
 
 ## BACKGROUND INFO
 
-This soil hygrometer measures the amount of water content inside the soil based on electrical resistance and gives the moisture level as output. The sensor is equipped with both analog and digital output, so it can be used in both analog and digital mode.
+This soil hygrometer measures the amount of water content inside the soil based on electrical resistance and gives the moisture level as output. The sensor is equipped with both analog and digital output so that it can be used in both analog and digital modes.
 
 Specifications
-* Input Voltage	3.3 – 5V
+* Input Voltage    3.3 – 5V
 * Output Voltage 0 – 4.2V
-* Input Current	35mA
-* Output Signal	Both Analog (A0) and Digital(D0)
+* Input Current    35mA
+* Output Signal    Both Analog (A0) and Digital(D0)
 
 #### Soil moisture
-Soil moisture is basically the content of water present in the soil. Relative soil moisture thus is the amount of water currently in the soil compared to when the soil is completely logged with water.
+Soil moisture is essentially the content of water present in the soil. Relative soil moisture is the amount of water currently in the soil compared to when the soil is completely logged with water.
 
 #### How the soil hygrometer works
 The soil moisture sensor consists of two conducting plates which function as a probe. This sensor is used to measure the volumetric content of water.
 
-It can measure the moisture content in the soil based on the change in resistance between these two conducting plates. When there is more water, the soil will conduct more electricity which means that there will be less resistance. Therefore, the moisture level will be higher.
-Similarly dry soil conducts less electricity. When there will be less water, then the soil will conduct less electricity which means that there will be more resistance. Therefore, the moisture level will be lower.
+It can measure the moisture content in the soil based on the change in resistance between the two conducting plates. When there is more water, the soil will conduct more electricity, which means that there will be less resistance. Therefore, the moisture level will be higher.
+Similarly, dry soil conducts less electricity. When there is less water, the soil will conduct less electricity, which means that there will be more resistance. Therefore, the moisture level will be lower.
 
 #### Pinout
 Generic
 
 ![](https://i.imgur.com/YCLNE50.png)
 
-How it looks like
+What it looks like
 
 ![](https://i.imgur.com/zVX0Jl2.jpg)
 
@@ -38,24 +38,21 @@ How it looks like
 
 ## PROCEDURE
 #### Calibration
-To get accurate readings out of your soil moisture sensor, it is recommended that you first calibrate it for the particular type of soil that you plan to monitor.
+For the soil moisture sensor to give accurate readings, it is recommended that you first calibrate it for the particular type of soil that you plan to monitor.
 
 Different types of soil can affect the sensor, so your sensor may be more or less sensitive depending on the type of soil you use.
 
-Before you start storing data or triggering events, you should see what readings you are actually getting from your sensor.
+Before you start storing data or triggering events, you should see what readings you are getting from your sensor.
 
-#### How to setup Soil hygromter
-Wiring the module to the eris-dev-kit is really easy.
-Connect the Red wire or Vcc pin to the 5V on the dev kit and Black wire or GND pin to ground. Finally connect the Orange wire or Data pin to the PWM enabled pin PA7.
-Connect the module to any 3 pin brackets e.g to PB0, PB1, PA6 brackets
+#### How to setup Soil hygrometer
+Wiring the module to the eris-dev-kit is easy.
+Connect the Red wire or Vcc pin to the 5V on the dev kit and Black wire or GND pin to ground. Finally, connect the Orange wire or Data pin to the PWM enabled pin PA7.
+Connect the module to any 3 pin brackets e.g., to PB0, PB1, PA6 brackets
 
-![](https://i.imgur.com/TxK1X6M.jpg)
-
-
-![](https://i.imgur.com/vZqCwHZ.jpg)
+![](https://i.imgur.com/mpteb0L.png)
 
 #### Programming
-To make it to operate in Analog Mode, we need to connect analog output of the sensor to ADC input of the eris-dev-kit. While monitoring the sensor we will get ADC values from 0-4095. The moisture content will be measured in percentage, so we have to map the values from 0 -100 and then that will be displayed on Serial Monitor.
+To make it operate in Analog Mode, we need to connect the analog output of the sensor to the ADC input of the eris-dev-kit. While monitoring the sensor, we will get ADC values from 0-4095. The moisture content will be measured in percentage, so we have to map the values from 0 -100, which will be displayed on Serial Monitor.
 
 ```cpp=
 const int soilMoisturePin = PA6; // Pin where the data pin is connected
@@ -74,7 +71,7 @@ void loop() {
 
 ```
 
-If you want to get percentage
+If you want to get the percentage
 
 ```cpp=
 void loop() {
@@ -88,9 +85,12 @@ void loop() {
 
 ```
 
+![](https://i.imgur.com/TxK1X6M.jpg)
+
+![](https://i.imgur.com/vZqCwHZ.jpg)
+
+
 ## APPLICATIONS
 - Agriculture Department
 - Landscape Irrigation
 - Gardening purpose
-
-
