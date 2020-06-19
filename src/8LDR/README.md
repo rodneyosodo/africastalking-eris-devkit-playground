@@ -2,17 +2,17 @@
 ###### tags: `eris-devkit`
 
 ## INTRODUCTION
-We all want our home appliances to be controlled automatically based on some conditions and that's called Home automation. We will learn how to use light intensity to control devices. For this, we need a light sensor to detect the light condition and some circuitry to control the Light sensor. We will use the Light Dependent Resistor.
+We all want our home appliances to be controlled automatically based on some conditions, which is called Home Automation. We will learn how to use light intensity to control devices. For this, we need a light sensor to detect the light condition and some circuitry to control the light sensor. We will use the Light Dependent Resistor.
 
 
 ## BACKGROUND INFO
-LDR is Light Dependent Resistor. LDRs are made from semiconductor materials to enable them to have their light-sensitive properties. 
+LDR is a Light Dependent Resistor. LDRs are made from semiconductor materials which enable them to have their light-sensitive properties. 
 
 #### What is a Light Dependent Resistor?
-A photoresistor, LDR for light-dependent resistor is a passive component that decreases resistance with respect to receiving  light on the component's sensitive surface. The resistance of a photoresistor decreases with increase in incident light intensity; in other words, it exhibits photoconductivity.
+A photoresistor, LDR for a light-dependent resistor, is a passive component that decreases resistance with respect to receiving light on the component's sensitive surface. The resistance of a photoresistor decreases with an increase in incident light intensity; in other words, it exhibits photoconductivity.
 
 #### How the LDR works?
-When light falls on the surface of the LDR the conductance of the element increases, the resistance of the LDR decreases. This property of the LDR is achieved because it is a property of semiconductor material used on the surface.
+When light falls on the surface of the LDR the conductance of the element increases, the resistance of the LDR decreases. This property of the LDR is achieved because it is a property of the semiconductor material used on the surface.
 
 #### Pinout
 
@@ -32,9 +32,9 @@ How it looks like
 ## PROCEDURE
 #### How to setup DHT11
 
-![](https://i.imgur.com/5EJQfHl.jpg)
+![](https://i.imgur.com/gGia4LK.png)
 
-Wiring the LDR to the eris-dev-kit is really easy.
+Wiring the LDR to the eris-dev-kit is easy.
 Connect the Red wire or Vcc pin to the 5V on the dev kit and Black wire or GND pin to ground. Finally connect the Orange wire or Data pin to the PWM enabled pin PA7.
 Connect the module to any 3 pin brackets e.g to PB0, PB1, PA6 brackets
 
@@ -47,7 +47,7 @@ Connect the module to any 3 pin brackets e.g to PB0, PB1, PA6 brackets
 
 
 #### Programming
-The analog Pin senses the voltage and gives some analog value to eris-dev-kit. The analog value changes according to the resistance of LDR. So, as the light falls on the LDR the resistance of it get decreased and hence the voltage value increase.
+The analog pin senses the voltage and gives some analog value to eris-dev-kit. The analog value changes according to the resistance of LDR. So, as the light falls on the LDR, the resistance of it get decreased and hence the voltage value increase.
 
 ```cpp
 const int ldrPin = PA6; // declaring the analog input pint as PA6
@@ -94,6 +94,8 @@ void loop() {
 
 ```
 As per the eris-dev-kit code, if the analog value falls below 2000 we consider it as dark and the light turns ON. If the value comes above 2000 we consider it as bright and the light turns OFF.
+
+![](https://i.imgur.com/5EJQfHl.jpg)
 
 ## APPLICATIONS
 - Home automation
