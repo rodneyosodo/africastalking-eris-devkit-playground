@@ -1,108 +1,119 @@
-# index
+# africastalking-eris-devkit-playground
 
-**tags: eris-devkit**
+This is my playground for the africastalking erisv1 development kit.
 
-## INTRODUCTION
 
-Want to add motion to your next Arduino project without building a motor controller? Then servo motors might be the solid launching point for you. With servo motors you can precisely control the positioning of these motors. Instructing them where to point, and they’ll do it for you.
+![GitHub](https://img.shields.io/github/license/0x6f736f646f/africastalking-eris-devkit-playground?style=plastic&color=brightgreen)
+![GitHub repo size](https://img.shields.io/github/repo-size/0x6f736f646f/africastalking-eris-devkit-playground?color=brightgreen&style=plastic)
+![GitHub language count](https://img.shields.io/github/languages/count/0x6f736f646f/africastalking-eris-devkit-playground?&style=plastic&color=brightgreen)
+![GitHub last commit](https://img.shields.io/github/last-commit/0x6f736f646f/africastalking-eris-devkit-playground?style=plastic&color=brightgreen)
 
-## BACKGROUND INFORMATION
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
 
-### What is Servo?
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [Contact](#contact)
+* [Acknowledgements](#acknowledgements)
 
-Servo is a general term for a closed loop control system.
 
-A closed loop system uses the feedback signal to adjust the speed and direction of the motor to achieve the desired result.
 
-The output shaft drives a servo arm and is also connected to a potentiometer \(pot\).
+<!-- ABOUT THE PROJECT -->
+## About The Project
+[![img](https://i.imgur.com/qFCOPik.jpg)](https://africastalking.com/iot)
 
-The potentiometer provides position feedback to the servo control unit where the current position of the motor is compared to the target position.
 
-According to the error, the control unit corrects the actual position of the motor so that it matches the target position.
+This is my playground for the africastalking erisv1 development kit. I plan on building with arduino then rust and finally bare metal. Hope you learn one or two things
 
-### How Servo Motors Work?
 
-You can control the servo motor by sending a series of pulses to the signal line. A conventional analog servo motor expects to receive a pulse roughly every 20 milliseconds \(i.e. signal should be 50Hz\).
+### Built With
 
-The length of the pulse determines the position of the servo motor.
+* [Arduino](https://www.arduino.cc/en/Main/Software)
+* [Vscode](https://code.visualstudio.com/)
+* [Fritzing](https://fritzing.org/)
 
-If the pulse is high for 1ms, then the servo angle will be zero. If the pulse is high for 1.5ms, then the servo will be at its center position. If the pulse is high for 2ms, then the servo will at 180 degrees. Pulses ranging between 1ms and 2ms will move the servo shaft through the full 180 degrees of its travel.
 
-### Pinout
 
-![](https://i.imgur.com/4LFDthm.png)
 
-* **GND** \(black or brown wire\) is a common ground for both the motor and logic.
-* **5V** \(red wire\) is a positive voltage that powers the servo.
-* **Control** \(orange or yellow wire\)is input for the control system.
+<!-- GETTING STARTED -->
+## Getting Started
 
-For example let’s use SG90 Micro Servo Motor. It runs on 4.8-6VDC \(5V Typical\) and can rotate approximately 180 degrees \(90 in each direction\)..
+These instructions will get you a copy of the code up and running on your local host for development and testing purposes.
 
-It consumes around 10mA at idle and 100mA to 250mA when moving, so we can power it up through 5-volt output on the dev kit.
+### Prerequisites
 
-If you have a servo that consumes more than 250mA, consider using a separate power supply for your servo.
+Things you will need to bring the project up on your local machine
 
-## PROCEDURE
+* stm32board support for arduino
+* rust support
 
-Before you can use the servo motor, you’ll need to use the Servo library. It is will written. ![](https://i.imgur.com/n7N7OPA.png)
-
-### How to setup Servo motor
-
-Connect the Red wire to the 5V on the dev kit \(or DC jack\) and Black/Brown wire to ground. Finally connect the Orange/Yellow wire to the PWM enabled pin PA7.
-
-### Sweep
-
-```cpp
-#include <Servo.h>
-
-Servo myservo;  // create servo object to control a servo
-
-int pos = 0;    // variable to store the servo position
-
-void setup() {
-    myservo.attach(PA7);  // attaches the servo on pin 9 to the servo object
-}
-
-void loop() {
-    for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees in steps of 1 degree
-        myservo.write(pos);// tell servo to go to position in 'pos'
-        delay(15); // waits 15ms for the servo to reach the position
-    }
-    for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
-        myservo.write(pos);
-        delay(15);
-    }
-}
+### Installation
+ 
+1. Clone the repo
+```sh
+https://github.com/0x6f736f646f/africastalking-eris-devkit-playground
 ```
 
-### Controlling servo with a potentiometer
 
-The code to make the servo follow the knob’s position is simpler than to make it sweep.
 
-#### Wiring
+<!-- USAGE EXAMPLES -->
+## Usage
 
-As the wiring diagram shows you’ll need a potentiometer, any value from 10k up will be OK. Connect one end of the pot to ground, the other end to the Arduino 5V and the wiper to analog input PA7.
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-```cpp
-#include <Servo.h>
+_For more examples, please refer to the [Documentation](https://example.com)_
 
-int potPin = PA7;
-int servoPin = PA6;
-Servo servo;
 
-void setup() {
-    servo.attach(servoPin);
-}
 
-void loop() {
-    int reading = analogRead(potPin); // reading the value from the analog pin PA7 and gives us values between 0 and 4095
-    int angle = map(reading, 0, 4095, 0, 180); // re maps the number range 0-4095 to 0-180 to represent angle in degrees
-    servo.write(angle); // command that tells the servo to update its position to the angle selected by the potentiometer.
-}
-```
+<!-- ROADMAP -->
+## Roadmap
 
-## Applications
+See the [open issues](https://github.com/0x6f736f646f/africastalking-eris-devkit-playground/issues) for a list of proposed features (and known issues).
 
-* turning the front wheels on an RC model for steering
-* pivoting a sensor to look around on a robotic vehicle.
 
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+
+<!-- LICENSE -->
+## License
+Distributed under the MIT License. See [LICENSE](https://github.com/0x6f736f646f/africastalking-eris-devkit-playground/blob/master/LICENSE) for more information.
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Rodney Osodo - [@b1ackd0t](https://twitter.com/b1ackd0t)
+
+
+Project Link: [https://github.com/0x6f736f646f/africastalking-eris-devkit-playground](https://github.com/0x6f736f646f/africastalking-eris-devkit-playground)
+
+
+
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
+
+* [Moi Brian]()
+* [Kelvin Gitu]()
+
+[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/0)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/0)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/1)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/1)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/2)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/2)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/3)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/3)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/4)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/4)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/5)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/5)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/6)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/6)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/7)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/7)
