@@ -19,25 +19,25 @@ Give your next project bat-powers with a HC-SR04 Ultrasonic Distance Sensor that
 
 #### What is Ultrasound?
 
-Ultrasound is high-pitched sound waves with frequencies higher than the audible limit of human hearing.
+Ultrasound is a high-pitched sound wave with frequencies higher than the audible limit of human hearing.
 Ultrasonic Frequency Range Spectrum
 
-Human ears can hear sound waves that vibrate in the range from about 20 times a second (a deep rumbling noise) to about 20,000 times a second (a high-pitched whistling). However, ultrasound has a frequency of over 20,000 Hz and is therefore inaudible to humans.
+Human ears can hear sound waves that vibrate in the range from about 20 times a second (a deep rumbling noise) to about 20,000 times a second (a high-pitched whistling). However, ultrasound has a frequency of over 20,000 Hz and is, therefore, inaudible to humans.
 
 #### HC-SR04 Hardware Overview
 
-At its core, the HC-SR04 Ultrasonic distance sensor consists of two ultrasonic transducers. The one acts as a transmitter which converts electrical signal into 40 KHz ultrasonic sound pulses. The receiver listens for the transmitted pulses. If it receives them it produces an output pulse whose width can be used to determine the distance the pulse travelled. As simple as pie!
+At its core, the HC-SR04 Ultrasonic distance sensor consists of two ultrasonic transducers. The one acts as a transmitter, which converts an electrical signal into 40 kHz ultrasonic sound pulses. The receiver listens for the transmitted pulses. If it receives them, it produces an output pulse whose width can be used to determine the distance the pulse traveled. As simple as pie!
 
 #### How it works
-It all starts, when a pulse of at least 10 microseconds in duration is applied to the Trigger pin. In response to that the sensor transmits a sonic burst of eight pulses at 40 KHz. This 8-pulse pattern makes the “ultrasonic signature” from the device unique, allowing the receiver to differentiate the transmitted pattern from the ambient ultrasonic noise.
+It all starts when a pulse of at least 10 microseconds in duration is applied to the Trigger pin. In response to that, the sensor transmits a sonic burst of eight pulses at 40 kHz. This 8-pulse pattern makes the “ultrasonic signature” from the device unique, allowing the receiver to differentiate the transmitted pattern from the ambient ultrasonic noise.
 
-The eight ultrasonic pulses travel through the air away from the transmitter. Meanwhile the Echo pin goes HIGH to start forming the beginning of the echo-back signal.
+The eight ultrasonic pulses travel through the air away from the transmitter. Meanwhile, the Echo pin goes HIGH to start forming the beginning of the echo-back signal.
 
-In case, If those pulses are not reflected back then the Echo signal will timeout after 38 milliseconds and return low. 
+If those pulses are not reflected back, then the echo signal will timeout after 38 milliseconds and return low. 
 
-If those pulses are reflected back the Echo pin goes low as soon as the signal is received. This produces a pulse whose width varies between 150 µS to 25 mS, depending upon the time it took for the signal to be received.
+If those pulses are reflected back, the Echo pin goes LOW as soon as the signal is received. This produces a pulse whose width varies between 150 µS to 25 mS, depending upon the time it took for the signal to be received.
 
-The width of the received pulse is then used to calculate the distance to the reflected object. This can be worked out using simple distance-speed-time equation.
+The width of the received pulse is then used to calculate the distance to the reflected object. This can be worked out using a simple distance-speed-time equation.
 ```cpp
 Distance = Speed x Time
 Distance = (0.034 cm/µs x 500 µs) / 2
@@ -62,10 +62,11 @@ How it looks
 ## PROCEDURE
 #### How to setup DHT11
 Start by placing the sensor on to your breadboard. Connect VCC pin to the 5V pin on the eris-dev-kit and connect GND pin to the Ground pin on the eris-dev-kit.
-![](https://i.imgur.com/UZDn3NQ.jpg)
+
+![](https://i.imgur.com/cyzx1Sy.png)
 
 #### Programming
-Before doing the hard process we will use the NewPing librarry which should be installed. It is well written and has good examples. It is easy to install, Go to tools the manage library then search `New Ping`
+Before doing the hard process, we will use the NewPing library. It is well written and has good examples. To install this library, go to tools, manage library then search `New Ping`.
 
 
 
@@ -111,7 +112,7 @@ void loop(){
 }
 
 ```
-If you want to bring back the decimal point values you can use NewPing in duration mode instead of in distance mode. You need to replace this line
+If you want to bring back the decimal point values you can use NewPing in duration mode instead of the distance mode. You need to replace this line
 
 ```cpp
 // Send ping, get distance in cm
@@ -122,7 +123,7 @@ with below lines
 duration = sonar.ping();
 distance = (duration / 2) * 0.0343;
 ```
-To improve the accuracy we will use the ping median function. It takes many duration measurements instead of just one, throws away any invalid readings and then averages the remaining ones. By default it takes 5 readings but you can actually specify as many as you wish.
+To improve the accuracy we will use the ping median function. It takes many duration measurements instead of just one, throws away any invalid readings and then averages the remaining ones. By default it takes 5 readings but you can specify as many as you wish.
 ```cpp
 int iterations = 5;
 duration = sonar.ping_median(iterations);
