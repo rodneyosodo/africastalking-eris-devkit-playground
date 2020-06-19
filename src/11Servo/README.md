@@ -1,29 +1,29 @@
 # SERVO MOTOR
 ###### tags: `eris-devkit`
 ## INTRODUCTION
-Want to add motion to your next Arduino project without building a motor controller? Then servo motors might be the solid launching point for you. With servo motors you can precisely control the positioning of these motors. Instructing them where to point, and they’ll do it for you.
+Want to add motion to your next Arduino project without building a motor controller? Then servo motors might be the solid launching point for you. With servo motors, you can precisely control the positioning of these motors. Instructing them where to point, and they’ll do it for you.
 
 ## BACKGROUND INFORMATION
 
 #### What is Servo?
-Servo is a general term for a closed loop control system.
+Servo is a general term for a closed-loop control system.
 
-A closed loop system uses the feedback signal to adjust the speed and direction of the motor to achieve the desired result.
+A closed-loop system uses the feedback signal to adjust the speed and direction of the motor to achieve the desired result.
 
 The output shaft drives a servo arm and is also connected to a potentiometer (pot).
 
-The potentiometer provides position feedback to the servo control unit where the current position of the motor is compared to the target position.
+The potentiometer provides position feedback to the servo control unit, where the current position of the motor is compared to the target position.
 
 According to the error, the control unit corrects the actual position of the motor so that it matches the target position.
 
 #### How Servo Motors Work?
-You can control the servo motor by sending a series of pulses to the signal line. A conventional analog servo motor expects to receive a pulse roughly every 20 milliseconds (i.e. signal should be 50Hz).
+You can control the servo motor by sending a series of pulses to the signal line. A conventional analog servo motor expects to receive a pulse roughly every 20 milliseconds (i.e., the signal should be 50Hz).
 
 The length of the pulse determines the position of the servo motor.
 
 If the pulse is high for 1ms, then the servo angle will be zero.
 If the pulse is high for 1.5ms, then the servo will be at its center position.
-If the pulse is high for 2ms, then the servo will at 180 degrees.
+If the pulse is high for 2ms, then the servo will operate at 180 degrees.
 Pulses ranging between 1ms and 2ms will move the servo shaft through the full 180 degrees of its travel.
 
 #### Pinout
@@ -49,10 +49,14 @@ If you have a servo that consumes more than 250mA, consider using a separate pow
 
 ## PROCEDURE
 Before you can use the servo motor, you’ll need to use the Servo library. It is will written.
+
 ![](https://i.imgur.com/n7N7OPA.png)
 
 #### How to setup Servo motor
 Connect the Red wire to the 5V on the dev kit (or DC jack) and Black/Brown wire to ground. Finally connect the Orange/Yellow wire to the PWM enabled pin PA7.
+
+![](https://i.imgur.com/XljJYwk.png)
+
 
 #### Sweep
 
@@ -83,9 +87,7 @@ void loop() {
 The code to make the servo follow the knob’s position is simpler than to make it sweep.
 
 ##### Wiring
-As the wiring diagram shows you’ll need a potentiometer, any value from 10k up will be OK. Connect one end of the pot to ground, the other end to the Arduino 5V and the wiper to analog input PA7.
-
-![](https://i.imgur.com/ouVDZkS.jpg)
+As the wiring diagram shows you’ll need a potentiometer, any value from 10k or more will be OK. Connect one end of the pot to ground, the other end to the Arduino 5V and the wiper to analog input PA7.
 
 
 ```cpp
@@ -105,6 +107,8 @@ void loop() {
     servo.write(angle); // command that tells the servo to update its position to the angle selected by the potentiometer.
 }
 ```
+
+![](https://i.imgur.com/ouVDZkS.jpg)
 
 ## Applications
 - turning the front wheels on an RC model for steering
