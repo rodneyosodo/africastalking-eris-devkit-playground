@@ -1,0 +1,86 @@
+name: 'Test compile for Arduino'
+description: 'Compile sketches or Arduino library examples for one board type using arduino-cli and check for errors'
+inputs:
+  cli-version:
+    description: 'Version of arduino-cli to use when builing. Current (3/2020) one is 0.9.0.'
+    default: 'latest'
+    required: false
+
+  sketch-names:
+    description: 'Comma sepatated list of patterns or filenames (without path) of the sketch(es) to test compile. Useful if the sketch is a *.cpp or *.c file or only one sketch in the repository should be compiled.'
+    default: '*.ino'
+    required: false
+
+  sketch-names-find-start:
+    description: 'The start directory to look for the sketch-names to test compile. Can be a path like "digistump-avr/libraries/*/examples/C*/" .'
+    default: '.'
+    required: false
+
+  arduino-board-fqbn:
+    #In the Arduino IDE, the fqbn is printed in the first line of the verbose output for compilation as parameter -fqbn=... for the "arduino-builder -dump-prefs" command
+    description: 'Fully Qualified Board Name of the Arduino board. You may add a suffix behind the fqbn with "|" to specify one board for e.g. different compile options like arduino:avr:uno|trace.'
+    default: 'arduino:avr:uno'
+    required: false
+
+  arduino-platform:
+    description: 'The platform specifier, if you require a fixed version like arduino:avr@1.8.2 or do not want the specifier derived from the 2 first elements of the arduino-board-fqbn'
+    default: ''
+    required: false
+
+  platform-default-url:
+    description: 'The platform URL for the required board description if arduino-board-fqbn does not start with "arduino:" and not explicitly specified by platform-url.'
+    default: 'https://arduino.esp8266.com/stable/package_esp8266com_index.json'
+    required: false
+
+  platform-url:
+    description: 'The platform URL for the required board description if arduino-board-fqbn does not start with "arduino:".'
+    default: ''
+    required: false
+
+  required-libraries:
+    description: 'Comma separated list of arduino library names required for compiling the sketches / examples for this board.'
+    default: ''
+    required: false
+
+  examples-exclude:
+    description: 'Comma or space separated list of significant prefixes of all sketches / examples to be excluded in the build for this board.'
+    default: ''
+    required: false
+
+  examples-build-properties:
+    description: |
+      Build parameter like -DDEBUG for each example specified or for all examples, if example name is "All". In json format.
+      For example: examples-build-properties: '{ "WhistleSwitch": "-DDEBUG -DFREQUENCY_RANGE_LOW", "SimpleFrequencyDetector": "-DINFO" }'
+    default: ''
+    required: false
+
+  debug-compile:
+    description: 'If set to "true" the action logs verbose compile output even during successful builds'
+    default: ''
+    required: false
+
+  debug-install:
+    description: 'If set to "true" the action logs verbose arduino-cli output during installation'
+    default: ''
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.cli-version }}
+    - ${{ inputs.sketch-names }}
+    - ${{ inputs.sketch-names-find-start }}
+    - ${{ inputs.arduino-board-fqbn }}
+    - ${{ inputs.arduino-platform }}
+    - ${{ inputs.platform-default-url }}
+    - ${{ inputs.platform-url }}
+    - ${{ inputs.required-libraries }}
+    - ${{ inputs.examples-exclude }}
+    - ${{ inputs.examples-build-properties }}
+    - ${{ inputs.debug-compile }}
+    - ${{ inputs.debug-install }}
+
+branding:
+  icon: 'eye'
+  color: 'red
