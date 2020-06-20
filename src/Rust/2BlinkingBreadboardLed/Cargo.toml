@@ -1,0 +1,37 @@
+[package]
+name = "a01-blink-onboard-led"
+version = "0.1.0"
+authors = ["0x6f736f646f <blackd0t@protonmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cortex-m = "0.6.2"
+cortex-m-rt = "0.6.11"
+cortex-m-semihosting = "0.3.3"
+panic-halt = "0.2.0"
+embedded-hal = "0.2.3"
+nb = "0.1.2"
+usb-device = "0.2.3"
+usbd-serial = "0.1.0"
+
+[dependencies.stm32f1xx-hal]
+version = "0.6.0"
+features = ["rt", "stm32f103", "medium"]
+
+# this lets you use `cargo fix`!
+[[bin]]
+name = "a01-blink-onboard-led"
+test = false
+bench = false
+
+[profile.release]
+codegen-units = 1 # better optimizations
+debug = true # symbols are nice and they don't increase the size on Flash
+lto = true # better optimizations
+
+[dependencies.stm32-usbd]
+version = "0.5.0"
+features = ["ram_access_1x16"]
+optional = true
