@@ -30,3 +30,14 @@
 *.exe
 *.out
 *.app
+
+# Rust target folder
+target/
+
+Cargo.lock
+
+# Elf file
+*.elf
+
+# Binary files
+*.bin
