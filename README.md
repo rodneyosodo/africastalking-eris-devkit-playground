@@ -3,7 +3,7 @@
 This is my playground for the africastalking erisv1 development kit.
 
 ![GitHub](https://img.shields.io/github/license/0x6f736f646f/africastalking-eris-devkit-playground?style=plastic&color=brightgreen) ![GitHub repo size](https://img.shields.io/github/repo-size/0x6f736f646f/africastalking-eris-devkit-playground?color=brightgreen&style=plastic) ![GitHub language count](https://img.shields.io/github/languages/count/0x6f736f646f/africastalking-eris-devkit-playground?&style=plastic&color=brightgreen) ![GitHub last commit](https://img.shields.io/github/last-commit/0x6f736f646f/africastalking-eris-devkit-playground?style=plastic&color=brightgreen)
-
+[![CodeFactor](https://www.codefactor.io/repository/github/0x6f736f646f/africastalking-eris-devkit-playground/badge)](https://www.codefactor.io/repository/github/0x6f736f646f/africastalking-eris-devkit-playground)
 ## Table of Contents
 
 * [About the Project]()
