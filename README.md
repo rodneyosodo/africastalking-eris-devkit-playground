@@ -1,7 +1,3 @@
----
-description: Welcome fam
----
-
 # INDEX
 
 This is my playground for the africastalking erisv1 development kit.
