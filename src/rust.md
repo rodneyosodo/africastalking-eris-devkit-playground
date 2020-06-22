@@ -1,7 +1,9 @@
 # RUST WITH AFRICASTALKING-ERIS-DEVKIT
-###### tags: `eris-devkit`
+
+#### tags: `eris-devkit`
 
 ## INTRODUCTION
+
 Rust is a new language that has been loved by its developers in recent years. And as the language grows, it has started to support a wider set of features, compilation and linking for bare-metal targets. As a new Rustacean, the syntax feels little bit hard to grasp.
 
 I will assume that you know a little bit of Rust. I’m still new to the language and I wont do a good job in explaining core concepts. Feel free to read more other documentation to support my claim
@@ -15,58 +17,56 @@ Like any other language we will setup a toolchain. Installation doesn't require 
 ### 2. Install the embedded Rust dependencies
 
 * Install the nightly version
-```shell
-rustup install nightly
-rustup default nightly
-```
 
-* Install the `rust-std` component `thumbv7m-none-eabi` to cross-compile for ARM Cortex-M3 (the processor):
+  ```text
+  rustup install nightly
+  rustup default nightly
+  ```
 
-```shell
+* Install the `rust-std` component `thumbv7m-none-eabi` to cross-compile for ARM Cortex-M3 \(the processor\):
+
+```text
 rustup target add thumbv7m-none-eabi
 ```
 
 * Install the arm gdb for debugging
-    
-```shell
+
+```text
 sudo apt install pkg-config cmake libssl-dev zlib1g-dev gdb-multiarch curl git
 
 sudo ln -s /usr/bin/gdb-multiarch /usr/bin/arm-none-eabi-gdb
 ```
-    
 
 ### 3. Install ARM Cross-Compiler and Linker
 
-```shell
+```text
 sudo apt install binutils-arm-none-eabi gcc-arm-none-eabi
 ```
-    
+
 Check ARM Installation
 
-```shell
+```text
 arm-none-eabi-gcc -v
 ```
-    
 
 ### 4. Install OpenOCD For Debugging
 
-```shell
+```text
 sudo apt install openocd
 ```
-
 
 ### 5. Install stm32flash
 
 Checkout this [repo for installation procedure](https://github.com/ARMinARM/stm32flash)
 
 ### 6. Getting the code
-```shell=
+
+```text
 git clone https://github.com/0x6f736f646f/africastalking-eris-devkit-playground
 cd africastalking-eris-devkit-playground/src/Rust/1BlinkingOnboardLed
 ```
 
 ## PROGRAMMING
-
 
 **GOAL** : Blink onboard LED using rust
 
@@ -74,7 +74,7 @@ cd africastalking-eris-devkit-playground/src/Rust/1BlinkingOnboardLed
 
 Lets look at the `Cargo.toml` file
 
-```cpp=
+```text
 # This is information about the project
 [package]
 name = "a01-blink-onboard-led"
@@ -118,14 +118,13 @@ codegen-units = 1
 debug = true
 # link with link time optimization(lto)
 lto = true
-
 ```
 
 ### Memory layout
 
 The `cortex-m-rt` requires `memory.x` which specifies the memory layout of the board
 
-```cpp=
+```text
 /* Linker script for the STM32F103C8T6 */
 MEMORY
 {
@@ -138,7 +137,7 @@ MEMORY
 
 When we compile the program using rustc there are many arguments passed. We therefore create a `.cargo/config` file
 
-```cpp=
+```text
 [target.thumbv7m-none-eabi]
 runner = "arm-none-eabi-gdb"
 
@@ -150,8 +149,8 @@ rustflags = [
     # LLD (shipped with the Rust toolchain) is used as the default linker use the Tlink.x script from cortex-m-rt crate
     "-C", "link-arg=-Tlink.x",
 ]
-
 ```
+
 The Rust compiler and the linker will assume that we have an underlying operating system that uses a C runtime by default. So to avoid linkwe errors we compiler for baremetal environment for thumbv7m-none-eabi target, which describes and ARM system.
 
 We had initially installed the thumbv7m-none-eabi target which provides the standard and core library for the system
@@ -159,8 +158,8 @@ We had initially installed the thumbv7m-none-eabi target which provides the stan
 ### Main file
 
 `src/main.rs`
-```rust=
 
+```text
 //! Blinks an LED
 //! The onboard LED is connected to PC13 as is the case on the blue pill board.
 
@@ -194,7 +193,7 @@ fn main() -> ! {
 
     // Freeze the configuration of all the clocks in the system and store the frozen frequencies in
 
- 
+
     let clocks = rcc.cfgr.freeze(&mut flash.acr);
 
     // Acquire the GPIOC peripheral
@@ -217,16 +216,13 @@ fn main() -> ! {
         delay.delay_ms(1_000_u16);
     }
 }
-
 ```
 
-Our code does not depend on any operating system features. This means that we can't use files, the network, random numbers, standard output or any feature requiring OS abstraction.
-`#![no_main]` tells the compiler that we don’t use the default `main` function with the argument vector and return type. This wouldn’t make sense, since we don’t have an OS or other kind of runtime which would call the function and handle the return value. Instead, the `cortex_m_rt` crate contains a minimal runtime and the `#[entry]` macro, which specifies our custom entry function (`fn main () -> ! {}`), which we call `main` as well (don’t be confused). More information about bare metal software in Rust can be found for example in the [“Writing an OS in Rust”](https://os.phil-opp.com/) Blog.
+Our code does not depend on any operating system features. This means that we can't use files, the network, random numbers, standard output or any feature requiring OS abstraction. `#![no_main]` tells the compiler that we don’t use the default `main` function with the argument vector and return type. This wouldn’t make sense, since we don’t have an OS or other kind of runtime which would call the function and handle the return value. Instead, the `cortex_m_rt` crate contains a minimal runtime and the `#[entry]` macro, which specifies our custom entry function \(`fn main () -> ! {}`\), which we call `main` as well \(don’t be confused\). More information about bare metal software in Rust can be found for example in the [“Writing an OS in Rust”](https://os.phil-opp.com/) Blog.
 
 The ! return type means that the function is diverging, i.e. not allowed to ever return. This is required because the entry point is not called by any function, but invoked directly by the operating system or bootloader. So instead of returning, the entry point should e.g. invoke the exit system call of the operating system. In our case, shutting down the machine could be a reasonable action, since there's nothing left to do if a freestanding binary returns. For now, we fulfill the requirement by looping endlessly.
 
-
-The panic_handler attribute defines the function that the compiler should invoke when a panic occurs. The standard library provides its own panic handler function, but in a no_std environment we need to define it ourselves:
+The panic\_handler attribute defines the function that the compiler should invoke when a panic occurs. The standard library provides its own panic handler function, but in a no\_std environment we need to define it ourselves:
 
 ### Makefile
 
@@ -234,7 +230,7 @@ The `src/main.rs` is the brains of our application and this `makefile` is the br
 
 `Makefile`
 
-```cpp=
+```text
 AOC = arm-none-eabi-objcopy
 DISASSEMBLE = arm-none-eabi-objdump
 TARGET = thumbv7m-none-eabi
@@ -275,14 +271,13 @@ clean:
     cargo clean
     [ -f $(KERNEL_BIN) ] && echo exists && rm $(KERNEL_BIN) || echo not exists
     [ -f $(KERNEL_HEX) ] && echo exists && rm $(KERNEL_HEX) || echo not exists
-
 ```
 
 ### Creating the Binary
 
-We need an ARM toolchain installed on our system. 
+We need an ARM toolchain installed on our system.
 
-```shell=
+```text
 make build
 ```
 
@@ -290,7 +285,7 @@ make build
 
 We can now view the disassembly of the _elf_ file:
 
-```
+```text
 make disassemble
 ```
 
@@ -298,7 +293,7 @@ So far, we only operated with the _elf_ file. This format does not only contain 
 
 Converting the _elf_ file to _bin_ file
 
-```
+```text
 make compile
 ```
 
@@ -306,10 +301,9 @@ The `Kernel.bin` is now ready to flash.
 
 ### Flashing the Binary
 
-You need to have stm32flash
-To flash the _bin_ file, we execute:
+You need to have stm32flash To flash the _bin_ file, we execute:
 
-```shell=
+```text
 make flash
 ```
 
@@ -317,18 +311,16 @@ make flash
 
 ### Summary of Commands to Build and Flash the Software:
 
-```shell=
+```text
 make all
 make flash
 ```
 
 **That’s it!** Now the LED on the board is blinking!
 
-
-
 ## CONCLUSION
-This was surprisingly easy and fun!
 
+This was surprisingly easy and fun!
 
 ## REFERENCES
 
@@ -336,6 +328,7 @@ This was surprisingly easy and fun!
 * Awesome Embedded Rust: [https://github.com/rust-embedded/awesome-embedded-rust](https://github.com/rust-embedded/awesome-embedded-rust)
 * STM32F103C8 Website: [https://www.st.com/en/microcontrollers/stm32f103c8.html](https://www.st.com/en/microcontrollers/stm32f103c8.html)
 * STM32F103C8 Datasheet: [https://www.st.com/resource/en/datasheet/stm32f103c8.pdf](https://www.st.com/resource/en/datasheet/stm32f103c8.pdf)
-* STM32F103C8 Reference Manual: [https://www.st.com/content/ccc/resource/technical/document/reference_manual/59/b9/ba/7f/11/af/43/d5/CD00171190.pdf/files/CD00171190.pdf/jcr:content/translations/en.CD00171190.pdf](https://www.st.com/content/ccc/resource/technical/document/reference_manual/59/b9/ba/7f/11/af/43/d5/CD00171190.pdf/files/CD00171190.pdf/jcr:content/translations/en.CD00171190.pdf)
-* STM32F103C8 Flash Programming: [https://www.st.com/content/ccc/resource/technical/document/programming_manual/10/98/e8/d4/2b/51/4b/f5/CD00283419.pdf/files/CD00283419.pdf/jcr:content/translations/en.CD00283419.pdf](https://www.st.com/content/ccc/resource/technical/document/programming_manual/10/98/e8/d4/2b/51/4b/f5/CD00283419.pdf/files/CD00283419.pdf/jcr:content/translations/en.CD00283419.pdf)
-* STM32F103C8 ARM Cortex M3 Programming: [https://www.st.com/content/ccc/resource/technical/document/programming_manual/5b/ca/8d/83/56/7f/40/08/CD00228163.pdf/files/CD00228163.pdf/jcr:content/translations/en.CD00228163.pdf](https://www.st.com/content/ccc/resource/technical/document/programming_manual/5b/ca/8d/83/56/7f/40/08/CD00228163.pdf/files/CD00228163.pdf/jcr:content/translations/en.CD00228163.pdf)
+* STM32F103C8 Reference Manual: [https://www.st.com/content/ccc/resource/technical/document/reference\_manual/59/b9/ba/7f/11/af/43/d5/CD00171190.pdf/files/CD00171190.pdf/jcr:content/translations/en.CD00171190.pdf](https://www.st.com/content/ccc/resource/technical/document/reference_manual/59/b9/ba/7f/11/af/43/d5/CD00171190.pdf/files/CD00171190.pdf/jcr:content/translations/en.CD00171190.pdf)
+* STM32F103C8 Flash Programming: [https://www.st.com/content/ccc/resource/technical/document/programming\_manual/10/98/e8/d4/2b/51/4b/f5/CD00283419.pdf/files/CD00283419.pdf/jcr:content/translations/en.CD00283419.pdf](https://www.st.com/content/ccc/resource/technical/document/programming_manual/10/98/e8/d4/2b/51/4b/f5/CD00283419.pdf/files/CD00283419.pdf/jcr:content/translations/en.CD00283419.pdf)
+* STM32F103C8 ARM Cortex M3 Programming: [https://www.st.com/content/ccc/resource/technical/document/programming\_manual/5b/ca/8d/83/56/7f/40/08/CD00228163.pdf/files/CD00228163.pdf/jcr:content/translations/en.CD00228163.pdf](https://www.st.com/content/ccc/resource/technical/document/programming_manual/5b/ca/8d/83/56/7f/40/08/CD00228163.pdf/files/CD00228163.pdf/jcr:content/translations/en.CD00228163.pdf)
+
