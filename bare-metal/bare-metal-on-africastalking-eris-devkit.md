@@ -1,4 +1,8 @@
-# Bare Metal on Africastalking-eris-devkit
+---
+description: Bare metal on africastalking eris dev kit
+---
+
+# Bare Metal on Africastalking eris dev kit
 
 **tags: eris-devkit**
 
@@ -33,7 +37,7 @@ In the STM32F10xxx reference manual at page 51 is the memory map, where we find 
 
 First, we are going to activate the clock for GPIOC port. For that, we set bit IOPCEN in register RCC\_APB2ENR \(offset 0x18, bit 4\).
 
-```cpp
+```c
 #include <stdint.h>
 // register address
 #define RCC_BASE      0x40021000
@@ -66,7 +70,7 @@ And finally, to turn ‘1’ and ‘0’ the pin we set/reset the bit 13 in GPIO
 
 C run-time assembly file crt.s
 
-```cpp
+```c
 // Instruct the assembler to generate thumb code
 // for the cortex-M3 core
 .cpu cortex-m3
@@ -103,7 +107,7 @@ Memory Map The diagram below shows how the main areas are mapped out:
 
 Linker script file linker.ld
 
-```cpp
+```c
 MEMORY
 {
   FLASH (rx) : ORIGIN = 0x08000000, LENGTH = 64K
@@ -115,7 +119,7 @@ This instructs the linker how to place different sections of data into the binar
 
 ### Makefile
 
-```cpp
+```bash
 CC = arm-none-eabi-gcc
 AS = arm-none-eabi-as
 LD = arm-none-eabi-ld
@@ -169,7 +173,7 @@ Our program normally lives in the Flash memory which starts at 0x0800 0000. So h
 
 #### Building
 
-```text
+```bash
 make
 make all
 ```
@@ -178,13 +182,13 @@ make all
 
 Before uploading the code into the board, you need to be in BOOT 0 and press reset pin.
 
-```text
+```bash
 make flash
 ```
 
 #### Cleaning
 
-```text
+```bash
 make clean
 ```
 

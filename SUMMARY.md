@@ -19,7 +19,7 @@
 
 ## Bare Metal
 
-* [Bare Metal on Africastalking-eris-devkit](bare-metal/bare-metal-on-africastalking-eris-devkit.md)
+* [Bare Metal on Africastalking eris dev kit](bare-metal/bare-metal-on-africastalking-eris-devkit.md)
 
 ## Projects
 
