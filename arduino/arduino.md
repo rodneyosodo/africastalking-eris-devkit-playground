@@ -1,3 +1,7 @@
+---
+description: Getting started with arduino
+---
+
 # Arduino
 
 #### tags: `eris-devkit`
@@ -8,29 +12,31 @@ Arduino IDE is a prototype platform which is used to write and upload the comput
 
 ## ERIS DEV KIT
 
-Africa's Talking Eris Development Kits are a series of microcontroller boards compatible with STM32Cube IDE and Arduino IDE. Eris v1 kits and boards ship with an STM32F103 Chip packaged in a manner that is both beginner friendly and also feature-packed for intermediate hobbyists. At the core is 72MHz ARM Cortex M3 with 64Kb of flash memory. The board ships with an inbuilt FTDI chip making it easy to program and SWD interface for easy debugging
+Africa's Talking Eris v1 Development Kits are a series of micro controller boards compatible with STM32Cube IDE and Arduino IDE. Eris v1 kits and boards ship with an STM32F103 Chip packaged in a manner that is both beginner friendly and also feature-packed for intermediate hobbyists. At the core is 72 MHz ARM Cortex-M3 with 64 Kb of flash memory. The board ships with an inbuilt FTDI chip making it easy to program and SWD interface for easy debugging
 
 ### Specifications
 
-* 32-bit ARM Cortex M3 clocked at 72MHz 3.3v logic
+* 32-bit ARM Cortex M3 clocked at 72 MHz 3.3 v logic
 * 64 Kb of flash memory
 * 20 Kb of SRAM
-* 8MHz clock and 32kHz clock for RTC
+* 8 MHz clock and 32 kHz clock for RTC
 * 2 USART interfaces
 * 7-channel DMA
-* 5VDC input voltage
-* On-board SIM Module with antenna \(for R2 series\)
-* On-board WiFi Module \(for R1 series\)
+* 5 V DC input voltage
+* On-board SIM Module with antenna \(for R 2 series\)
+* On-board WiFi Module \(for R 1 series\)
 * USB Support \(MAX3421E\)
 * On-board FTDI
 * SWD Interface
 
 The key features are
 
-1. The dev kit are able to read analog input signals from different sensors and turn it into an output such as activating a motor, turning LED on/off, connect to the cloud and many other actions.
+1. The dev kit is able to read analog input signals from different sensors and turn it into an output such as activating a motor, turning LED on/off, connect to the cloud and many other actions.
 2. Unlike most previous programmable circuit boards, Eris Dev kit does not need an extra piece of hardware \(called a programmer\) in order to load a new code onto the board. You can simply use a USB cable.
 
 ## LAYOUT
+
+![Eris Dev Kit](../.gitbook/assets/imageedit_23_8218476446.jpg)
 
 ### 1. **Power USB**
 
@@ -38,7 +44,7 @@ Eris Dev kit can be powered by using the USB cable from your computer. All you n
 
 ### 2. Power \(Barrel Jack\)
 
-Eris Dev kits can be powered directly from the AC mains power supply by connecting it to the Barrel Jack, but its hould be 5V output.
+Eris Dev kits can be powered directly from the AC mains power supply by connecting it to the Barrel Jack, but it should be from a 5 V output.
 
 ### 3. Voltage Regulator
 
@@ -66,7 +72,7 @@ Mostly consisting of MOSI, MISO, SCK, RESET, VCC, and GND. It is often referred 
 
 * **Power LED indicator**
 
-This LED D7 should light up when you plug your Arduino into a power source to indicate that your board is powered up correctly. If this light does not turn on, then there is something wrong with the connection.
+This LED D7 should light up when you plug your eris dev kit into a power source to indicate that your board is powered up correctly. If this light does not turn on, then there is something wrong with the connection.
 
 * **TX and RX LEDs**
 
@@ -80,7 +86,7 @@ Parallel connection between the Eris Dev kit and peripherals via input/output po
 
 ### Serial Communication Modules
 
-Serial communication is almost the defacto on most microcontroller boards.
+Serial communication is almost the defacto on most micro controller boards.
 
 Types of Serial Communications
 
@@ -89,11 +95,11 @@ Types of Serial Communications
 
 It is easy to find out if a device is synchronous or not. If the same clock is given to all the connected devices, then they are synchronous. If there is no clock line, it is asynchronous. For example, UART \(Universal Asynchronous Receiver Transmitter\) module is asynchronous.
 
-Baud Rate: The term baud rate is used to denote the number of bits transferred per second \[bps\].
+Baud Rate: The term baud rate is used to denote the number of bits transferred per second \[bps\]. I would recommend 115200
 
-### Arduino UART
+### Eris dev kit UART
 
-The following code will make Arduino send hello world when it starts up.
+The following code will make eris dev kit send hello world when it starts up.
 
 ```cpp
 void setup() {
