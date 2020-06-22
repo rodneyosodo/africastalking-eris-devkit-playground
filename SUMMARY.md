@@ -15,7 +15,7 @@
 
 ## Rust
 
-* [Rust on Africastalking-eris-devkit](rust/rust-on-africastalking-eris-devkit.md)
+* [Rust on Africastalking eris dev kit](rust/rust-on-africastalking-eris-devkit.md)
 
 ## Bare Metal
 

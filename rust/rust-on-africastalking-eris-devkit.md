@@ -1,4 +1,8 @@
-# Rust on Africastalking-eris-devkit
+---
+description: Rust on africastalking eris dev kit
+---
+
+# Rust on Africastalking eris dev kit
 
 #### tags: `eris-devkit`
 
@@ -74,7 +78,7 @@ cd africastalking-eris-devkit-playground/src/Rust/1BlinkingOnboardLed
 
 Lets look at the `Cargo.toml` file
 
-```text
+```rust
 # This is information about the project
 [package]
 name = "a01-blink-onboard-led"
@@ -137,7 +141,7 @@ MEMORY
 
 When we compile the program using rustc there are many arguments passed. We therefore create a `.cargo/config` file
 
-```text
+```rust
 [target.thumbv7m-none-eabi]
 runner = "arm-none-eabi-gdb"
 
@@ -159,7 +163,7 @@ We had initially installed the thumbv7m-none-eabi target which provides the stan
 
 `src/main.rs`
 
-```text
+```rust
 //! Blinks an LED
 //! The onboard LED is connected to PC13 as is the case on the blue pill board.
 
@@ -230,7 +234,7 @@ The `src/main.rs` is the brains of our application and this `makefile` is the br
 
 `Makefile`
 
-```text
+```bash
 AOC = arm-none-eabi-objcopy
 DISASSEMBLE = arm-none-eabi-objdump
 TARGET = thumbv7m-none-eabi
@@ -277,7 +281,7 @@ clean:
 
 We need an ARM toolchain installed on our system.
 
-```text
+```bash
 make build
 ```
 
@@ -285,7 +289,7 @@ make build
 
 We can now view the disassembly of the _elf_ file:
 
-```text
+```bash
 make disassemble
 ```
 
@@ -293,7 +297,7 @@ So far, we only operated with the _elf_ file. This format does not only contain 
 
 Converting the _elf_ file to _bin_ file
 
-```text
+```bash
 make compile
 ```
 
@@ -303,7 +307,7 @@ The `Kernel.bin` is now ready to flash.
 
 You need to have stm32flash To flash the _bin_ file, we execute:
 
-```text
+```bash
 make flash
 ```
 
@@ -311,7 +315,7 @@ make flash
 
 ### Summary of Commands to Build and Flash the Software:
 
-```text
+```bash
 make all
 make flash
 ```
