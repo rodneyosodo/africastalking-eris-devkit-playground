@@ -1,22 +1,26 @@
-# index
+---
+description: Welcome fam
+---
+
+# INDEX
 
 This is my playground for the africastalking erisv1 development kit.
 
-![GitHub](https://img.shields.io/github/license/0x6f736f646f/africastalking-eris-devkit-playground?style=plastic&color=brightgreen) ![GitHub repo size](https://img.shields.io/github/repo-size/0x6f736f646f/africastalking-eris-devkit-playground?color=brightgreen&style=plastic) ![GitHub language count](https://img.shields.io/github/languages/count/0x6f736f646f/africastalking-eris-devkit-playground?&style=plastic&color=brightgreen) ![GitHub last commit](https://img.shields.io/github/last-commit/0x6f736f646f/africastalking-eris-devkit-playground?style=plastic&color=brightgreen)
-[![CodeFactor](https://www.codefactor.io/repository/github/0x6f736f646f/africastalking-eris-devkit-playground/badge)](https://www.codefactor.io/repository/github/0x6f736f646f/africastalking-eris-devkit-playground)
+![GitHub](https://img.shields.io/github/license/0x6f736f646f/africastalking-eris-devkit-playground?style=plastic&color=brightgreen) ![GitHub repo size](https://img.shields.io/github/repo-size/0x6f736f646f/africastalking-eris-devkit-playground?color=brightgreen&style=plastic) ![GitHub language count](https://img.shields.io/github/languages/count/0x6f736f646f/africastalking-eris-devkit-playground?&style=plastic&color=brightgreen) ![GitHub last commit](https://img.shields.io/github/last-commit/0x6f736f646f/africastalking-eris-devkit-playground?style=plastic&color=brightgreen) [![CodeFactor](https://www.codefactor.io/repository/github/0x6f736f646f/africastalking-eris-devkit-playground/badge)](https://www.codefactor.io/repository/github/0x6f736f646f/africastalking-eris-devkit-playground)
+
 ## Table of Contents
 
-* [About the Project]()
-  * [Built With]()
-* [Getting Started]()
-  * [Prerequisites]()
-  * [Installation]()
-* [Usage]()
-* [Roadmap]()
-* [Contributing]()
-* [License]()
-* [Contact]()
-* [Acknowledgements]()
+* [About the Project](./)
+  * [Built With](./)
+* [Getting Started](./)
+  * [Prerequisites](./)
+  * [Installation](./)
+* [Usage](./)
+* [Roadmap](./)
+* [Contributing](./)
+* [License](./)
+* [Contact](./)
+* [Acknowledgements](./)
 
 ## About The Project
 
@@ -38,8 +42,8 @@ These instructions will get you a copy of the code up and running on your localh
 
 Things you will need to bring the project upon your local machine.
 
-* stm32board support for Arduino
-* rust support
+* [stm32board support for Arduino](arduino/arduino.md)
+* [rust support](rust/rust-on-africastalking-eris-devkit.md)
 
 ### Installation
 
@@ -51,9 +55,9 @@ Things you will need to bring the project upon your local machine.
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples, and demos work well in this space. You may also link to more resources.
+I have used Arduino, DHT11, Light dependent resistor, soil moisture sensor, ultrasonic sensor, servo motor solid state relay and shift register to show you some of the few examples on working with the eris dev kit.
 
-_For more examples, please refer to the_ [_Documentation_](https://example.com)
+_For more examples, please refer to the_ [_Documentation_](arduino/arduino.md)
 
 ## Roadmap
 
@@ -61,7 +65,7 @@ See the [open issues](https://github.com/0x6f736f646f/africastalking-eris-devkit
 
 ## Contributing
 
-Contributions make the open-source community such a fantastic place to learn, inspire, and create. Any contributions you make are  **much appreciated**.
+Contributions make the open-source community such a fantastic place to learn, inspire, and create. Any contributions you make are **much appreciated**.
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct.
 

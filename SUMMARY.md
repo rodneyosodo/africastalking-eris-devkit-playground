@@ -1,9 +1,10 @@
 # Table of contents
 
-* [index](README.md)
+* [INDEX](README.md)
 
 ## Arduino
 
+* [Arduino](arduino/arduino.md)
 * [DHT11](arduino/dht11.md)
 * [Light Dependent Resistor](arduino/light-dependent-resistor.md)
 * [Soil Moisture Sensor](arduino/soil-moisture-sensor.md)
