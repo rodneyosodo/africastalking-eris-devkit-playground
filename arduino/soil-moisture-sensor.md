@@ -1,3 +1,7 @@
+---
+description: Working with the soil hygrometer as a soil moisture sensor sensor
+---
+
 # Soil Moisture Sensor
 
 #### tags: `eris-devkit`

@@ -1,39 +1,42 @@
+---
+description: Working with the Ultrasonic sensor
+---
+
 # HC-SR04 Ultrasonic Sensor
 
 #### tags: `eris-devkit`
 
 ## INTRODUCTION
 
-Give your next project bat-powers with a HC-SR04 Ultrasonic Distance Sensor that can report the range of objects up to 4 metres away.
+Give your next project bat-powers with a HC-SR04 ultrasonic distance sensor capable of reporting a range of objects up to 4 metres away.
 
 ## BACKGROUND INFO
 
 > Here are complete specifications:
 >
-> * Operating Voltage    DC 5V
-> * Operating Current    15mA
-> * Operating Frequency    40KHz
-> * Max Range    4m
-> * Min Range    2cm
-> * Ranging Accuracy    3mm
-> * Measuring Angle    15 degree
-> * Trigger Input Signal    10µS TTL pulse
-> * Dimension    45 x 20 x 15mm
-> * HC-SR04 Ultrasonic Sensor Pinout
+> * Operating Voltage DC 5 V
+> * Operating Current 15 mA
+> * Operating Frequency 40 KHz
+> * Max Range 4 m
+> * Min Range 2 cm
+> * Ranging Accuracy 3 mm
+> * Measuring Angle 15 degree
+> * Trigger Input Signal 10µS TTL pulse
+> * Dimension 45 x 20 x 15 mm
 
 ### What is Ultrasound?
 
-Ultrasound is a high-pitched sound wave with frequencies higher than the audible limit of human hearing. Ultrasonic Frequency Range Spectrum
+Ultrasound is a high-pitched sound wave with frequencies higher than the audible limit of human hearing in the ultrasonic frequency range, 20 kHz up to several gigahertz.
 
 Human ears can hear sound waves that vibrate in the range from about 20 times a second \(a deep rumbling noise\) to about 20,000 times a second \(a high-pitched whistling\). However, ultrasound has a frequency of over 20,000 Hz and is, therefore, inaudible to humans.
 
 ### HC-SR04 Hardware Overview
 
-At its core, the HC-SR04 Ultrasonic distance sensor consists of two ultrasonic transducers. The one acts as a transmitter, which converts an electrical signal into 40 kHz ultrasonic sound pulses. The receiver listens for the transmitted pulses. If it receives them, it produces an output pulse whose width can be used to determine the distance the pulse traveled. As simple as pie!
+At its core, the HC-SR04 Ultrasonic distance sensor consists of two ultrasonic transducers. The one that acts as a transmitter, which converts an electrical signal into 40 kHz ultrasonic sound pulses. The receiver listens for the transmitted pulses. If it receives them, it produces an output pulse whose width can be used to determine the distance the pulse traveled. As simple as pie!
 
 ### How it works
 
-It all starts when a pulse of at least 10 microseconds in duration is applied to the Trigger pin. In response to that, the sensor transmits a sonic burst of eight pulses at 40 kHz. This 8-pulse pattern makes the “ultrasonic signature” from the device unique, allowing the receiver to differentiate the transmitted pattern from the ambient ultrasonic noise.
+It all starts when a pulse of at least 10 microseconds in duration is applied to the Trigger pin. In response to that, the sensor transmits a sonic burst of eight pulses at 40 kHz. This 8-pulse pattern makes the ultrasonic signature, allowing the receiver to differentiate the transmitted pattern from the ambient ultrasonic noise.
 
 The eight ultrasonic pulses travel through the air away from the transmitter. Meanwhile, the Echo pin goes HIGH to start forming the beginning of the echo-back signal.
 
@@ -49,7 +52,7 @@ Distance = (0.034 cm/µs x 500 µs) / 2
 Distance = 8.5 cm
 ```
 
-### Pinout
+### Pin out
 
 Generic
 
@@ -67,7 +70,7 @@ How it looks
 
 ### How to setup DHT11
 
-Start by placing the sensor on to your breadboard. Connect VCC pin to the 5V pin on the eris-dev-kit and connect GND pin to the Ground pin on the eris-dev-kit.
+Start by placing the sensor on to your breadboard. Connect VCC pin to the 5V pin on the eris-dev-kit and connect GND pin to the Ground pin on the eris-dev-kit. Connect Trig pin to TX and Echo Pin to RX.
 
 ![](https://i.imgur.com/cyzx1Sy.png)
 
@@ -75,12 +78,12 @@ Start by placing the sensor on to your breadboard. Connect VCC pin to the 5V pin
 
 Before doing the hard process, we will use the NewPing library. It is well written and has good examples. To install this library, go to tools, manage library then search `New Ping`.
 
-```text
+```cpp
 // This uses Serial Monitor to display Range Finder distance readings
 // This uses Serial Monitor to display Range Finder distance readings
 
 // Include NewPing Library
-#include   <NewPing.h>
+#include <NewPing.h>
 
 // Hook up HC-SR04 with Trig to eris-dev-kit Pin PB10, Echo to eris-dev-kit pin PB11
 #define TRIGGER_PIN PB10
@@ -101,8 +104,6 @@ void setup(){
 void loop(){
     // Send ping, get distance in cm
     distance = sonar.ping_cm();
-    // duration = sonar.ping();
-    // distance = (duration / 2) * 0.0343;
 
     // Send results to Serial Monitor
     Serial.print("Distance = ");
