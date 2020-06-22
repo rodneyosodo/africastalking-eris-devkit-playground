@@ -4,7 +4,7 @@
 
 ## INTRODUCTION
 
-Have you ever found yourself controlling lots of LEDs or just needed more I/O pins to control buttons, sensors, servos all at once? Well, you could wire up few sensors to eris-dev-kit pins, but you would rapidly start to run out of pins on your eris-dev-kit.
+Have you ever found yourself controlling lots of LED's or just needed more I/O pins to control buttons, sensors, servos all at once? Well, you could wire up few sensors to eris-dev-kit pins, but you would rapidly start to run out of pins on your eris-dev-kit.
 
 The solution for this is to use a Shift Register. Shift registers are often used for the purpose of saving pins on the micro controller, as every micro controller has a limited number of GPIO.
 
