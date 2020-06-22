@@ -64,7 +64,7 @@ If your AC device is going to be off for most of the time, and you occasionally 
 ### Programming
 
 ```cpp
-int RelayPin = PA6;//declaring the pin to which input pin of relay module is connected.
+int RelayPin = PA6; //declaring the pin to which input pin of relay module is connected.
 
 void setup() {
     // Set RelayPin as an output pin
@@ -74,16 +74,16 @@ void setup() {
 void loop() {
     // Let's turn on the relay...
     digitalWrite(RelayPin, LOW);//pulls the pin LOW
-    delay(3000);
+    delay(5000); // wait for 5 seconds
 
     // Let's turn off the relay...
     digitalWrite(RelayPin, HIGH);//pulls the pin HIGH.
-    delay(3000);
+    delay(3000); // wait for 5 seconds
 }
 ```
 
 ## APPLICATIONS
 
-* home automation
-* farm or garden monitoring systems.
+* Home automation
+* Farm or garden monitoring systems.
 
