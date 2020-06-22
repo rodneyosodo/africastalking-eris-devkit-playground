@@ -1,3 +1,7 @@
+---
+description: Working with the Servo Motor
+---
+
 # Servo Motor
 
 **tags: eris-devkit**
@@ -56,7 +60,7 @@ Before you can use the servo motor, you’ll need to use the Servo library. It i
 
 ### How to setup Servo motor
 
-Connect the Red wire to the 5V on the dev kit \(or DC jack\) and Black/Brown wire to ground. Finally connect the Orange/Yellow wire to the PWM enabled pin PA7.
+Connect the Red wire to the 5 V on the dev kit \(or DC jack\) and Black/Brown wire to ground. Finally connect the Orange/Yellow wire to the PWM enabled pin PA7.
 
 ![](https://i.imgur.com/XljJYwk.png)
 
@@ -115,6 +119,6 @@ void loop() {
 
 ## Applications
 
-* turning the front wheels on an RC model for steering
-* pivoting a sensor to look around on a robotic vehicle.
+* Turning the front wheels on an RC model for steering
+* Pivoting a sensor to look around on a robotic vehicle.
 
