@@ -8,9 +8,9 @@ description: Rust on africastalking eris dev kit
 
 ## INTRODUCTION
 
-Rust is a new language that has been loved by its developers in recent years. And as the language grows, it has started to support a wider set of features, compilation and linking for bare-metal targets. As a new Rustacean, the syntax feels little bit hard to grasp.
+Rust is a new language that most developers who have had the opportunity to use it have fallen in love with it. And as the language grows, it has started to support a wider set of features, compilation and linking for bare-metal targets. As a new Rustacean, the syntax feels little bit hard to grasp.
 
-I will assume that you know a little bit of Rust. I’m still new to the language and I wont do a good job in explaining core concepts. Feel free to read more other documentation to support my claim
+I will assume that you know a little bit of Rust. I’m still new to the language and might not be as resourceful enough explaining core concepts. Feel free to read more other documentation to support my claim
 
 ## INSTALLATION
 
@@ -155,7 +155,7 @@ rustflags = [
 ]
 ```
 
-The Rust compiler and the linker will assume that we have an underlying operating system that uses a C runtime by default. So to avoid linkwe errors we compiler for baremetal environment for thumbv7m-none-eabi target, which describes and ARM system.
+The Rust compiler and the linker will assume that we have an underlying operating system that uses a C runtime by default so to avoid linker errors we compiler for baremetal environment for thumbv7m-none-eabi target, which describes and ARM system.
 
 We had initially installed the thumbv7m-none-eabi target which provides the standard and core library for the system
 
