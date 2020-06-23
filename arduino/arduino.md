@@ -8,7 +8,7 @@ description: Getting started with arduino
 
 ## INTRODUCTION
 
-Arduino IDE is a prototype platform which is used to write and upload the computer code to the physical board.
+Arduino IDE is a prototype platform is used to write and upload the computer code to the physical board.
 
 ## ERIS DEV KIT
 
@@ -31,7 +31,7 @@ Africa's Talking Eris v1 Development Kits are a series of micro controller board
 
 The key features are
 
-1. The dev kit is able to read analog input signals from different sensors and turn it into an output such as activating a motor, turning LED on/off, connect to the cloud and many other actions.
+1. The dev kit is able to read analog input signals from different sensors and turn it into an output such as activating a motor, turning LED on/off, connecting to the cloud and many other actions.
 2. Unlike most previous programmable circuit boards, Eris Dev kit does not need an extra piece of hardware \(called a programmer\) in order to load a new code onto the board. You can simply use a USB cable.
 
 ## LAYOUT
@@ -54,9 +54,9 @@ The function of the voltage regulator is to control the voltage given to the Eri
 
 The crystal oscillator helps Eris Dev kit in dealing with time issues.
 
-### 5. Arduino Reset
+### 5. Reset
 
-You can reset your Eris Dev kit, i.e., start your program from the beginning. You can reset the board by using the reset button on the board. When you reset the board while in BOOT 0 the code that was initially there will start to run. If you reset in BOOT 1 the code will be erase ready to receive new code.
+You can reset your Eris Dev kit, i.e., start your program from the beginning. You can reset the board by using the reset button on the board. When you reset the board while in BOOT 0 the code that was initially there will start to run. If you reset in BOOT 1 the code will be erased ready to receive new code.
 
 ### 6. Pins
 
