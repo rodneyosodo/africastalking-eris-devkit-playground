@@ -95,7 +95,7 @@ The code to make the servo follow the knob’s position is simpler than to make 
 
 #### Wiring
 
-As the wiring diagram shows you’ll need a potentiometer, any value from 10k or more will be OK. Connect one end of the pot to ground, the other end to the Arduino 5V and the wiper to analog input PA7.
+As the wiring diagram shows you’ll need a potentiometer, any value from 10k or more will be OK. Connect one end of the pot to ground, the other end to the eris dev kit 5V and the wiper to analog input PA7.
 
 ```cpp
 #include <Servo.h>
