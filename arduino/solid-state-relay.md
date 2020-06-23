@@ -8,7 +8,7 @@ Sometimes you want your micro controller to control AC powered devices like lamp
 
 ## BACKGROUND INFO
 
-We will walk through how to setup the one channel relay module to switch on a lamp or other device.
+We will walk through on how to setup the one channel relay module to switch on a lamp or other devices.
 
 ### How Do Relays Work?
 
