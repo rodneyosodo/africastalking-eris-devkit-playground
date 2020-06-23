@@ -68,7 +68,7 @@ How it looks
 
 ## PROCEDURE
 
-### How to setup DHT11
+### How to setup HC-SR04
 
 Start by placing the sensor on to your breadboard. Connect VCC pin to the 5V pin on the eris-dev-kit and connect GND pin to the Ground pin on the eris-dev-kit. Connect Trig pin to TX and Echo Pin to RX.
 
