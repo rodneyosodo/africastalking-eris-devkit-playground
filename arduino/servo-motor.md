@@ -8,7 +8,7 @@ description: Working with the Servo Motor
 
 ## INTRODUCTION
 
-Want to add motion to your next Arduino project without building a motor controller? Then servo motors might be the solid launching point for you. With servo motors, you can precisely control the positioning of these motors. Instructing them where to point, and they’ll do it for you.
+Want to add motion to your next project without building a motor controller? Then servo motors might be the solid launching point for you. With servo motors, you can precisely control the positioning of these motors. Instructing them where to point and they will do just that.
 
 ## BACKGROUND INFORMATION
 
@@ -30,7 +30,7 @@ You can control the servo motor by sending a series of pulses to the signal line
 
 The length of the pulse determines the position of the servo motor.
 
-If the pulse is high for 1ms, then the servo angle will be zero. If the pulse is high for 1.5ms, then the servo will be at its center position. If the pulse is high for 2ms, then the servo will operate at 180 degrees. Pulses ranging between 1ms and 2ms will move the servo shaft through the full 180 degrees of its travel.
+If the pulse is high for 1ms, then the servo angle will be zero. If the pulse is high for 1.5ms, then the servo will be at its central position. If the pulse is high for 2ms, then the servo will operate at 180 degrees. Pulses ranging between 1ms and 2ms will move the servo shaft through the full 180 degrees of its travel.
 
 ### Pinout
 
@@ -54,7 +54,7 @@ If you have a servo that consumes more than 250mA, consider using a separate pow
 
 ## PROCEDURE
 
-Before you can use the servo motor, you’ll need to use the Servo library. It is will written.
+Before you can use the servo motor, you’ll need to use the Servo library. It is well written.
 
 ![](https://i.imgur.com/n7N7OPA.png)
 
@@ -95,7 +95,7 @@ The code to make the servo follow the knob’s position is simpler than to make 
 
 #### Wiring
 
-As the wiring diagram shows you’ll need a potentiometer, any value from 10k or more will be OK. Connect one end of the pot to ground, the other end to the Arduino 5V and the wiper to analog input PA7.
+As the wiring diagram shows you’ll need a potentiometer, any value from 10k or more will be OK. Connect one end of the pot to ground, the other end to the eris dev kit 5V and the wiper to analog input PA7.
 
 ```cpp
 #include <Servo.h>

@@ -53,7 +53,7 @@ Let’s take a look at its Pin out. Notice that two pins have a line over their 
 
 ## PROCEDURE
 
-### How to setup DHT11
+### How to setup 74HC595
 
 Start by placing the shift register on to your breadboard, ensuring each side of the IC is on a separate side of the breadboard. With the little U-shaped notch facing upwards, the pins are 1-8 down the left hand side from top to bottom and 16 – 9 down the right hand side from top to bottom as can be seen in the illustration below.
 

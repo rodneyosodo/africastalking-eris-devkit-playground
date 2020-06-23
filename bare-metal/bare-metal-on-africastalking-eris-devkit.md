@@ -8,7 +8,7 @@ description: Bare metal on africastalking eris dev kit
 
 ## INTRODUCTION
 
-We are going to build a LED blink app from scratch, using only the manual of the STM32F103C8T6 chip.
+We are going to build an LED blink app from scratch, using the manual of the STM32F103C8T6 chip.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ We create a directory with the followinf four files named:
 
 ### main.c
 
-Lets make the on board LED blink. The eris-dev-kit has two LEDs, one for power and one driven by MCU, connected to port C, bit 13.
+Lets make the on board LED blink. The eris-dev-kit has two LEDs, one for power and the other one driven by MCU, connected to port C, bit 13.
 
 For making the LED to blink we need to configure GPIO port C13 and add some delay.
 
@@ -115,7 +115,7 @@ MEMORY
 }
 ```
 
-This instructs the linker how to place different sections of data into the binary. It usually refers to ROM/FLASH and RAM. As you can see the flash memory starts at 0x0800 0000 and the SRAM starts at 0x2000 0000. I could also take from the datasheet that my processor has 64 KiB of flash and 20 KiB of SRAM.
+This instructs the linker on how to place different sections of data into the binary. It usually refers to ROM/FLASH and RAM. As you can see the flash memory starts at 0x0800 0000 and the SRAM starts at 0x2000 0000. I could also take from the datasheet that my processor has 64 KiB of flash and 20 KiB of SRAM.
 
 ### Makefile
 
