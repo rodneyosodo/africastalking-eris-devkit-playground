@@ -83,8 +83,11 @@ Project Link: [https://github.com/0x6f736f646f/africastalking-eris-devkit-playgr
 
 ## Acknowledgements
 
+[comment]: <> (Add your name and twitter handle)
+
 * [Moi Brian](https://twitter.com/moibrian5?s=08)
 * [Kelvin Gitu](https://twitter.com/GituKelvin)
+* [Michael Kimani](https://twitter.com/kimanimike99)
 
 [![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/0)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/0)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/1)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/1)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/2)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/2)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/3)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/3)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/4)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/4)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/5)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/5)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/6)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/6)[![](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/images/7)](https://sourcerer.io/fame/0x6f736f646f/0x6f736f646f/africastalking-eris-devkit-playground/links/7)
 
