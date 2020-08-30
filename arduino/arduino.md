@@ -134,3 +134,12 @@ Now you can find the STM32 boards package in the "Board" menu.
 
 1. Select the desired boards series : STM32F103Cxxx
 
+2. Ensure that the following settings under TOOLS are as follows:
+- variant: `STM32F103C8 (20k RAM, 64k Flash)`
+- upload_method: `serial`
+- cpu_speed(MHz): `72Mhz(Normal)`
+- optimize: `smallest(default`)
+
+3. Press the RESET button on the board
+
+4. Proceed to Upload
